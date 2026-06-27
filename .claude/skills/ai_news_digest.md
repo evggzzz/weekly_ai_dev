@@ -43,18 +43,76 @@ date +%Y-%m-%d
    - Focus on open-source models, datasets, and community tools
    - **Source URL**: https://huggingface.co/blog
 
+8. **TLDR AI Newsletter**
+   - Check https://tldr.tech/api/latest/ai for the latest issue
+   - Curated multi-source AI dev news (cross-source summaries fill coverage gaps)
+   - **NOTE**: the top page https://tldr.tech/ai is a landing page only — use the `/api/latest/ai` endpoint for content
+   - **Source URL**: https://tldr.tech/api/latest/ai
+
+9. **Latent Space**
+   - Check https://www.latent.space/feed (RSS) for recent posts
+   - AI engineering deep-dives, model/tool analysis
+   - **NOTE**: the top page is a Substack landing — use the `/feed` RSS for full content
+   - **Source URL**: https://www.latent.space/ (content via https://www.latent.space/feed)
+
+10. **Ahead of AI (Sebastian Raschka)**
+   - Check https://magazine.sebastianraschka.com/feed (RSS) for recent posts
+   - LLM architecture technical deep-dives
+   - **NOTE**: Substack — use the `/feed` RSS for content
+   - **Source URL**: https://magazine.sebastianraschka.com/ (content via /feed)
+
+11. **Import AI (Jack Clark)**
+   - Check https://importai.substack.com/feed (RSS) for recent issues
+   - AI policy, frontier research
+   - **NOTE**: the top page returns 403 — the `/feed` RSS is open, use it
+   - **Source URL**: https://importai.substack.com/ (content via /feed)
+
+12. **The Batch (Andrew Ng)**
+   - Check https://www.deeplearning.ai/the-batch/ for recent issues
+   - Weekly AI educational summaries
+   - **Source URL**: https://www.deeplearning.ai/the-batch/
+
+13. **AWS Machine Learning Blog**
+   - Check https://aws.amazon.com/jp/blogs/machine-learning/ for recent posts
+   - Bedrock, managed AI services, developer integrations (Japanese edition)
+   - **Source URL**: https://aws.amazon.com/jp/blogs/machine-learning/
+
+**Model Evaluation & Comparison Sources** (check when a new model is announced in any source above):
+
+14. **LMSYS Chatbot Arena**
+   - Check https://lmarena.ai/ for the latest leaderboard (Elo ranking)
+   - Report objective model performance when new models drop
+   - **Source URL**: https://lmarena.ai/
+   - **NOTE**: the leaderboard is **fully JS-rendered** — WebFetch returns only a landing page. **Always use Playwright**.
+
+15. **Artificial Analysis**
+   - Check https://artificialanalysis.ai/ for the article list (HTML, retrievable)
+   - Developer-facing model comparison
+   - **Source URL**: https://artificialanalysis.ai/
+   - **NOTE**: leaderboard ranking numbers are JS-rendered and NOT retrievable via WebFetch — use article pages or Playwright for numbers.
+
+16. **OpenRouter Compare**
+   - Check https://openrouter.ai/rankings for model rankings
+   - Cost/performance tradeoff data
+   - **Source URL**: https://openrouter.ai/rankings
+   - **NOTE**: the `/compare` page is fully JS-rendered and returns no content via WebFetch — use `/rankings`; if that is also JS-rendered, use Playwright.
+
 **Execution Steps:**
 
-1. For each news source, use WebFetch to check for recent updates (within last 7 days ONLY)
-2. Filter for AI-driven development relevance:
+1. For each news source, use WebFetch to check for recent updates (within last 7 days ONLY). When WebFetch is blocked (403 / returns JS or CSS), fall back to Playwright (`require('playwright')` Node.js script via Bash).
+   - **Playwright script placement**: the script MUST live inside the project directory (`weekly_ai_dev/`) — placing it in `/tmp` breaks `require('playwright')` module resolution. Run as `cd <weekly_ai_dev> && node <script>.js`.
+   - **Newsletter / Substack sources** (Latent Space, Ahead of AI, Import AI): prefer the `/feed` RSS endpoint over the top page (which is a landing page or 403).
+   - **JS-rendered leaderboards** (Chatbot Arena, Artificial Analysis rankings, OpenRouter): use Playwright.
+2. **Model evaluation cross-reference**: When a new model release is detected in any source, check Chatbot Arena, Artificial Analysis, and OpenRouter to report its objective ranking and cost alongside the announcement.
+3. Filter for AI-driven development relevance:
    - API updates, SDK releases, developer tools
    - New models with API access or code generation capabilities
    - AI development frameworks, libraries, or platforms
    - Developer-focused features and integrations
    - EXCLUDE: General AI research, medical AI, robotics without dev relevance
-3. Extract and summarize ONLY relevant announcements
-4. **CRITICAL**: If no relevant news found, output a minimal file with only the standard template indicating no news was found
-5. Save the summary to `resources/[TODAY_DATE]/ai_news_summary.md`
+4. Extract and summarize ONLY relevant announcements
+5. **CRITICAL**: If no relevant news found, output a minimal file with only the standard template indicating no news was found
+6. Save the summary to `resources/[TODAY_DATE]/ai_news_summary.md`
 
 **Link Requirements:**
 - Always include the original article URL for each news item
@@ -88,6 +146,15 @@ date +%Y-%m-%d
 - Microsoft Research Blog: https://www.microsoft.com/en-us/research/blog/
 - DeepMind Blog: https://deepmind.google/discover/blog/
 - Hugging Face Blog: https://huggingface.co/blog
+- TLDR AI: https://tldr.tech/api/latest/ai
+- Latent Space: https://www.latent.space/
+- Ahead of AI: https://magazine.sebastianraschka.com/
+- Import AI: https://importai.substack.com/
+- The Batch: https://www.deeplearning.ai/the-batch/
+- AWS Machine Learning Blog: https://aws.amazon.com/jp/blogs/machine-learning/
+- LMSYS Chatbot Arena: https://lmarena.ai/
+- Artificial Analysis: https://artificialanalysis.ai/
+- OpenRouter Rankings: https://openrouter.ai/rankings
 ```
 
 **Completion Output:**

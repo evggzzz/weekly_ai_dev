@@ -98,6 +98,46 @@ date +%Y-%m-%d
     5.  Summarize the key changes or new features from the release notes.
     6.  **Include Links:** Repository URL (https://github.com/github/copilot-cli) and Release URL (https://github.com/github/copilot-cli/releases/tag/<tag>)
 
+9.  **`paul-gauthier/aider`** (Aider)
+  *   **Source Type:** GitHub Releases
+  *   **How to check:**
+    1.  Use `gh release list --repo paul-gauthier/aider --limit 1` to get the latest release.
+    2.  Extract the release tag and the publication date.
+    3.  If the publication date is within the last 7days, proceed.
+    4.  Use `gh release view <tag> --repo paul-gauthier/aider` to get the release notes.
+    5.  Summarize the key changes or new features from the release notes.
+    6.  **Include Links:** Repository URL (https://github.com/paul-gauthier/aider) and Release URL (https://github.com/paul-gauthier/aider/releases/tag/<tag>)
+
+10. **`All-Hands-AI/OpenHands`** (OpenHands, formerly OpenDevin)
+  *   **Source Type:** GitHub Releases
+  *   **How to check:**
+    1.  Use `gh release list --repo All-Hands-AI/OpenHands --limit 1` to get the latest release.
+    2.  Extract the release tag and the publication date.
+    3.  If the publication date is within the last 7days, proceed.
+    4.  Use `gh release view <tag> --repo All-Hands-AI/OpenHands` to get the release notes.
+    5.  Summarize the key changes or new features from the release notes.
+    6.  **Include Links:** Repository URL (https://github.com/All-Hands-AI/OpenHands) and Release URL (https://github.com/All-Hands-AI/OpenHands/releases/tag/<tag>)
+
+11. **`continuedev/continue`** (Continue)
+  *   **Source Type:** GitHub Releases
+  *   **How to check:**
+    1.  Use `gh release list --repo continuedev/continue --limit 1` to get the latest release.
+    2.  Extract the release tag and the publication date.
+    3.  If the publication date is within the last 7days, proceed.
+    4.  Use `gh release view <tag> --repo continuedev/continue` to get the release notes.
+    5.  Summarize the key changes or new features from the release notes.
+    6.  **Include Links:** Repository URL (https://github.com/continuedev/continue) and Release URL (https://github.com/continuedev/continue/releases/tag/<tag>)
+
+12. **`sourcegraph/cody`** (Sourcegraph Cody)
+  *   **Source Type:** GitHub Releases
+  *   **How to check:**
+    1.  Use `gh release list --repo sourcegraph/cody --limit 1` to get the latest release.
+    2.  Extract the release tag and the publication date.
+    3.  If the publication date is within the last 7days, proceed.
+    4.  Use `gh release view <tag> --repo sourcegraph/cody` to get the release notes.
+    5.  Summarize the key changes or new features from the release notes.
+    6.  **Include Links:** Repository URL (https://github.com/sourcegraph/cody) and Release URL (https://github.com/sourcegraph/cody/releases/tag/<tag>)
+
 **Execution Steps:**
 
 1.  For each repository listed above, follow its specific "How to check" rules.
