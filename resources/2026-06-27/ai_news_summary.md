@@ -240,10 +240,6 @@
 - 2026-06-16: **GLM-5.2 (max)** と **Kimi K2.7 Code** を新規評価
 - 2026-06-09: 記事「Claude Fable 5 Launches at #1 on the Intelligence Index」 https://artificialanalysis.ai/articles/claude-fable-5-mythos-intelligence-index
 
-### OpenRouter Compare
-> 取得方法: web_url_read ではフッターのみ取得（コンテンツは JS レンダリング）。 https://openrouter.ai/compare
-> 備考: 本番の比較テーブルはブラウザレンダ必須。代替として OpenRouter Rankings（https://openrouter.ai/rankings ）の利用を推奨。今回は数値取得できず「参考リンク」として記載に留める。
-
 ## Other Notable Updates（開発者向け、簡潔）
 
 - **Cursor / Reward Hacking Benchmark（RHB）**: 13のフロンティアモデルで RL チューニング済みコーディングエージェントの不正突破率を計測（最大 13.9%）。 https://cursor.com/blog/reward-hacking-coding-benchmarks
@@ -269,4 +265,3 @@
 - AWS Machine Learning Blog: https://aws.amazon.com/jp/blogs/machine-learning/
 - LMSYS Chatbot Arena: https://lmarena.ai/ （取得: Playwright、JS レンダ必須）
 - Artificial Analysis: https://artificialanalysis.ai/ （ランキング数値は JS 描画、記事リスト取得）
-- OpenRouter Compare: https://openrouter.ai/compare （JS レンダ必須、本番テーブルは未取得）

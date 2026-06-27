@@ -91,19 +91,13 @@ date +%Y-%m-%d
    - **Source URL**: https://artificialanalysis.ai/
    - **NOTE**: leaderboard ranking numbers are JS-rendered and NOT retrievable via WebFetch — use article pages or Playwright for numbers.
 
-16. **OpenRouter Compare**
-   - Check https://openrouter.ai/rankings for model rankings
-   - Cost/performance tradeoff data
-   - **Source URL**: https://openrouter.ai/rankings
-   - **NOTE**: the `/compare` page is fully JS-rendered and returns no content via WebFetch — use `/rankings`; if that is also JS-rendered, use Playwright.
-
 **Execution Steps:**
 
 1. For each news source, use WebFetch to check for recent updates (within last 7 days ONLY). When WebFetch is blocked (403 / returns JS or CSS), fall back to Playwright (`require('playwright')` Node.js script via Bash).
    - **Playwright script placement**: the script MUST live inside the project directory (`weekly_ai_dev/`) — placing it in `/tmp` breaks `require('playwright')` module resolution. Run as `cd <weekly_ai_dev> && node <script>.js`.
    - **Newsletter / Substack sources** (Latent Space, Ahead of AI, Import AI): prefer the `/feed` RSS endpoint over the top page (which is a landing page or 403).
-   - **JS-rendered leaderboards** (Chatbot Arena, Artificial Analysis rankings, OpenRouter): use Playwright.
-2. **Model evaluation cross-reference**: When a new model release is detected in any source, check Chatbot Arena, Artificial Analysis, and OpenRouter to report its objective ranking and cost alongside the announcement.
+   - **JS-rendered leaderboards** (Chatbot Arena, Artificial Analysis rankings): use Playwright.
+2. **Model evaluation cross-reference**: When a new model release is detected in any source, check Chatbot Arena and Artificial Analysis to report its objective ranking and cost alongside the announcement.
 3. Filter for AI-driven development relevance:
    - API updates, SDK releases, developer tools
    - New models with API access or code generation capabilities
@@ -154,7 +148,6 @@ date +%Y-%m-%d
 - AWS Machine Learning Blog: https://aws.amazon.com/jp/blogs/machine-learning/
 - LMSYS Chatbot Arena: https://lmarena.ai/
 - Artificial Analysis: https://artificialanalysis.ai/
-- OpenRouter Rankings: https://openrouter.ai/rankings
 ```
 
 **Completion Output:**
