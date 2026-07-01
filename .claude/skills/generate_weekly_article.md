@@ -50,6 +50,7 @@ date +%Y%m%d
      - **For Major Conferences**: Include large-scale conferences (next ~6 months) that need advance planning — global and Japan/Asia. Exclude small meetups (those are in events.md).
      - **For Overseas Community Trends**: Focus on technical insights, emerging trends, and actionable developer tips from global communities
      - **For Tech Blog Articles**: Highlight practical tutorials, architectural insights, and innovative use cases
+     - **DEPTH (common rule)**: For each noteworthy item (top releases, major news, standout repos), DON'T just summarize — dig deeper. Include concrete specifics: real command examples, config snippets, quantitative data (benchmarks, percentages, version diffs), and official doc URLs. Explain HOW it works and the concrete developer impact, not just WHAT. Aim for editor-grade depth (a professional weekly column), not a summary list.
    - **Link Requirements:**
      - **CRITICAL**: Always use the EXACT URLs from the source files (release_information.md, ai_news_summary.md, community_discussions.md, tech_blog_articles.md, events.md, trending_repositories.md)
      - **NEVER generate, modify, or create placeholder URLs** - only use URLs that actually exist in the resource files
@@ -74,7 +75,7 @@ date +%Y%m%d
      8. 今後の大型イベント
      9. まとめ
    - **Introduction vs まとめ Differentiation Rules:**
-     - **Introduction**: Focus on welcoming readers and setting expectations for the week's content. Mention the main themes or categories that will be covered (e.g., "今週は新しいAIツールのリリースと、開発者向けのイベント情報をお届けします"). Keep it forward-looking and inviting.
+     - **Introduction**: Welcome readers AND frame the week with an editorial lens — identify the single dominant theme/trend of the week (e.g., "今週はエージェントの自律性が一段上がるリリースが相次ぎました") and connect the items into a narrative, not a category list. Show the editor's viewpoint: why this week matters. Keep it forward-looking and inviting.
      - **まとめ**: Write a very concise summary (280 characters or less in Japanese) focusing on the single most important trend or development from this week. Avoid lengthy explanations and keep it brief and impactful.
    - Use the following format for the article:
     ```markdown
@@ -145,6 +146,7 @@ date +%Y%m%d
 
 **Execution Notes:**
 - The article should be in Japanese with appropriate formatting for Zenn
+- **Writing quality**: If the `japanese-tech-writing` skill is available, follow its norms — one sentence per line, paragraph-level argumentation, no LLM-ish hype or empty verbs (「重要なのは〜」「掘り下げる」「多角的に」etc.), no redundancy. Write like a human editor, not a summary generator.
 - Include relevant emojis to make the article more engaging
 - Gracefully handle missing data sources
 - **CRITICAL**: Never include sections with "No updates", "No events found", or similar empty content - completely exclude these sections
