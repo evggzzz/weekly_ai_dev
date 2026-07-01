@@ -24,9 +24,9 @@ Use this date value ($TODAY) for all subsequent steps. Do NOT run date commands 
 
 ## STEP 1: Execute Digest Tasks in PARALLEL
 
-Use the Task tool to launch ALL 7 digest tasks simultaneously with `run_in_background=true`.
+Use the Task tool to launch ALL 8 digest tasks simultaneously with `run_in_background=true`.
 
-**IMPORTANT:** Send a SINGLE message with ALL 7 Task tool calls to run them in parallel.
+**IMPORTANT:** Send a SINGLE message with ALL 8 Task tool calls to run them in parallel.
 
 Launch these tasks in parallel:
 
@@ -65,6 +65,11 @@ Launch these tasks in parallel:
    - subagent_type: "general-purpose"
    - run_in_background: true
 
+8. **ai_major_conferences_digest**
+   - Read `.claude/skills/ai_major_conferences_digest.md` and use its content as the prompt
+   - subagent_type: "general-purpose"
+   - run_in_background: true
+
 ## STEP 2: Collect Results from All Tasks
 
 Use TaskOutput to collect results from each background task:
@@ -82,7 +87,7 @@ Track results:
 
 **Error Handling:** If a task fails, log "FAILED: [task name] - [error]" and continue collecting other results.
 
-**AFTER ALL 7 RESULTS COLLECTED → IMMEDIATELY GO TO STEP 3**
+**AFTER ALL 8 RESULTS COLLECTED → IMMEDIATELY GO TO STEP 3**
 
 ## STEP 3: Generate Final Article
 

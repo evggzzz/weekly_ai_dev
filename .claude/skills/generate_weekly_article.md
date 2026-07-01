@@ -28,6 +28,7 @@ date +%Y%m%d
      - `ai_news_summary.md`
      - `ai_trending_papers.md`
      - `events.md`
+     - `major_conferences.md`
      - `community_discussions.md`
      - `tech_blog_articles.md`
    - Check which files exist and read their contents
@@ -46,6 +47,7 @@ date +%Y%m%d
      - **For AI News**: Prioritize major announcements, product launches, and strategic developments
      - **For AI Trending Papers**: Include all papers from the source file with their Japanese summaries and arXiv links
      - **For Events**: Include events that are highly relevant to AI developers and provide learning opportunities
+     - **For Major Conferences**: Include large-scale conferences (next ~6 months) that need advance planning — global and Japan/Asia. Exclude small meetups (those are in events.md).
      - **For Overseas Community Trends**: Focus on technical insights, emerging trends, and actionable developer tips from global communities
      - **For Tech Blog Articles**: Highlight practical tutorials, architectural insights, and innovative use cases
    - **Link Requirements:**
@@ -69,7 +71,8 @@ date +%Y%m%d
      5. テックブログ
      6. 海外コミュニティ動向
      7. 今週のAI開発イベント
-     8. まとめ
+     8. 今後の大型イベント
+     9. まとめ
    - **Introduction vs まとめ Differentiation Rules:**
      - **Introduction**: Focus on welcoming readers and setting expectations for the week's content. Mention the main themes or categories that will be covered (e.g., "今週は新しいAIツールのリリースと、開発者向けのイベント情報をお届けします"). Keep it forward-looking and inviting.
      - **まとめ**: Write a very concise summary (280 characters or less in Japanese) focusing on the single most important trend or development from this week. Avoid lengthy explanations and keep it brief and impactful.
@@ -107,6 +110,9 @@ date +%Y%m%d
 
     ## 📅 今週のAI開発イベント
     [Content from events.md if available - MANDATORY: copy URLs exactly as they appear in the source file]
+
+    ## 🎢 今後の大型イベント
+    [Content from major_conferences.md if available - large conferences in next ~6 months (global + Japan/Asia). MANDATORY: copy URLs exactly as they appear in the source file]
 
     ## 📝 まとめ
     [Write a concise summary in 280 characters or less (Japanese). Focus on the single most important trend or development from this week. Keep it brief and impactful.]
