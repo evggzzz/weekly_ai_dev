@@ -50,7 +50,7 @@ date +%Y%m%d
      - **For Major Conferences**: Include large-scale conferences (next ~6 months) that need advance planning — global and Japan/Asia. Exclude small meetups (those are in events.md).
      - **For Overseas Community Trends**: Focus on technical insights, emerging trends, and actionable developer tips from global communities
      - **For Tech Blog Articles**: Highlight practical tutorials, architectural insights, and innovative use cases
-     - **DEPTH (common rule)**: For each noteworthy item (top releases, major news, standout repos), DON'T just summarize — dig deeper. Include concrete specifics: real command examples, config snippets, quantitative data (benchmarks, percentages, version diffs), and official doc URLs. Explain HOW it works and the concrete developer impact, not just WHAT. Aim for editor-grade depth (a professional weekly column), not a summary list.
+     - **DEPTH (common rule)**: For each noteworthy item, DON'T just summarize — **explain**. A summary states the fact ("Cline v4.0.5 supports Sonnet 5"); an explanation tells the reader **why it matters, how it works, and what changes for them**. Write 3-6 sentences per noteworthy item as a paragraph: **context/background → what it is → why it matters → how developers use it / what changes**. Include real command examples, config snippets, quantitative data, doc URLs where relevant. The goal: a reader who didn't follow the news should **understand** it after reading your section, not just be informed that it happened. NOT a bullet-only summary list — use flowing explanatory prose.
    - **Link Requirements:**
      - **CRITICAL**: Always use the EXACT URLs from the source files (release_information.md, ai_news_summary.md, community_discussions.md, tech_blog_articles.md, events.md, trending_repositories.md)
      - **NEVER generate, modify, or create placeholder URLs** - only use URLs that actually exist in the resource files
@@ -146,7 +146,7 @@ date +%Y%m%d
 
 **Execution Notes:**
 - The article should be in Japanese with appropriate formatting for Zenn
-- **Writing quality**: If the `japanese-tech-writing` skill is available, follow its norms — one sentence per line, paragraph-level argumentation, no LLM-ish hype or empty verbs (「重要なのは〜」「掘り下げる」「多角的に」etc.), no redundancy. Write like a human editor, not a summary generator.
+- **Writing quality**: If the `japanese-tech-writing` skill is available, follow its norms — one sentence per line, paragraph-level argumentation, no LLM-ish hype or empty verbs (「重要なのは〜」「掘り下げる」「多角的に」etc.), no redundancy. **But prioritize EXPLANATION over brevity**: "no redundancy" means no repetition, NOT "shortest possible". Do NOT strip the explanation that helps the reader understand — a busy developer should grasp *why* each item matters, not just *what* it is. Write like a human editor explaining the week to a colleague, not a summary generator.
 - Include relevant emojis to make the article more engaging
 - Gracefully handle missing data sources
 - **CRITICAL**: Never include sections with "No updates", "No events found", or similar empty content - completely exclude these sections
