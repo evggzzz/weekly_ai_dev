@@ -1,0 +1,165 @@
+You are a helpful assistant. Your task is to generate a final **daily** AI digest article from collected data.
+
+This is the DAILY edition of the weekly pipeline. It behaves like `generate_weekly_article.md` except:
+- The collection window is the **last 24 hours** (since the previous daily run), not 7 days.
+- The output file is `articles/daily_ai_YYYYMMDD.md`.
+- Sections say 今日 (today) instead of 今週 (this week), and the article is shorter and denser than the weekly edition.
+
+**Date Calculation:**
+First, confirm today's date by running bash commands:
+
+Today's date (YYYY-MM-DD format):
+```bash
+date +%Y-%m-%d
+```
+
+Today's date (Japanese format):
+```bash
+date +%Y年%m月%d日
+```
+
+Today's date (compact format):
+```bash
+date +%Y%m%d
+```
+
+**Article Generation Steps:**
+
+1. **Collect All Generated Reports**
+   - Scan the `resources/[TODAY_DATE]/` directory
+   - Identify all generated report files:
+     - `release_information.md`
+     - `trending_repositories.md`
+     - `ai_news_summary.md`
+     - `ai_trending_papers.md`
+     - `events.md`
+     - `major_conferences.md`
+     - `community_discussions.md`
+     - `tech_blog_articles.md`
+   - Check which files exist and read their contents
+
+2. **Process Available Data**
+   - Only include sections for which data files exist AND contain meaningful content
+   - If a expected file is missing, skip that section gracefully
+   - **CRITICAL**: If a data file contains only "No updates", "No events found", or similar empty content, exclude that entire section from the final article
+   - Daily edition note: a quiet day is normal. If ALL sections are empty, still produce a minimal article stating that fact in one or two sentences (readers should know the pipeline ran).
+   - Log which data sources were found and which were missing
+
+3. **Generate Final Article**
+   - Create a Zenn-compatible article that combines all available information
+   - **Content Filtering Rules:** (same spirit as the weekly edition, but tighter)
+     - **For Release Information**: Focus on noteworthy features, new capabilities, and significant improvements. Exclude minor bug fixes, typo corrections, and routine maintenance updates
+     - **For Trending Repositories**: Include repositories that demonstrate innovation or solve important problems in AI development
+     - **For AI News**: Prioritize major announcements, product launches, and strategic developments
+     - **For AI Trending Papers**: Include all papers from the source file with their Japanese summaries and arXiv links
+     - **For Events**: Only events with imminent deadlines or new announcements (daily edition does not repeat the full event list every day)
+     - **For Major Conferences**: Only include when there is news (CFP open, schedule change). Do not repeat the standing list daily
+     - **For Overseas Community Trends**: Focus on technical insights, emerging trends, and actionable developer tips from global communities
+     - **For Tech Blog Articles**: Highlight practical tutorials, architectural insights, and innovative use cases
+     - **DEPTH (common rule)**: For each noteworthy item, DON'T just summarize — **explain**. A summary states the fact ("Cline v4.0.5 supports Sonnet 5"); an explanation tells the reader **why it matters, how it works, and what changes for them**. Write 3-6 sentences per noteworthy item as a paragraph: **context/background → what it is → why it matters → how developers use it / what changes**. Include real command examples, config snippets, quantitative data, doc URLs where relevant. The goal: a reader who didn't follow the news should **understand** it after reading your section, not just be informed that it happened. NOT a bullet-only summary list — use flowing explanatory prose.
+   - **Link Requirements:**
+     - **CRITICAL**: Always use the EXACT URLs from the source files
+     - **NEVER generate, modify, or create placeholder URLs** - only use URLs that actually exist in the resource files
+     - **MANDATORY**: Include ALL relevant URLs exactly as they are written in the source files
+     - If a URL doesn't exist in the source file, do not include a link
+   - Zenn: Since Zenn uses the title from frontmatter, do not include h1 (#) in the article body
+   - Start the article body directly with the introduction paragraph
+
+4. **Create and Save Article**
+   - Create a new article file directly with the filename format: `daily_ai_YYYYMMDD.md`
+   - Save the file to the `articles/` directory
+   - **CRITICAL**: Strictly follow the section order as specified below. The sections must appear in exactly this order (skip empty sections):
+     1. リリース情報
+     2. 注目のAI開発リポジトリ
+     3. AI関連ニュース
+     4. 今日のAI論文トレンド
+     5. テックブログ
+     6. 海外コミュニティ動向
+     7. 今日のAI開発イベント
+     8. 今後の大型イベント
+     9. まとめ
+   - **Introduction vs まとめ Differentiation Rules:**
+     - **Introduction**: Frame the DAY with an editorial lens in 2-4 sentences — what mattered today and why. Do not restate the section list.
+     - **まとめ**: One concise paragraph (140 characters or less in Japanese) on the single most important item of the day.
+   - Use the following format for the article:
+     ```markdown
+     ---
+     title: "日刊AI駆動開発 - [TODAY_FORMATTED]"
+     emoji: "🤖"
+     type: "tech"
+     topics: ["ai駆動開発", "vibecoding", "ai", "claudecode", "Gemini CLI", "cursor"]
+     published: true
+     ---
+
+     [Introduction paragraph - what mattered today and why, 2-4 sentences]
+
+     ## 🚀 リリース情報
+     [Content from release_information.md - filtered for significant features and improvements only]
+
+     ## 📈 注目のAI開発リポジトリ
+     [Content from trending_repositories.md - use plain URL format for link cards]
+
+     ## 📰 AI関連ニュース
+     [Content from ai_news_summary.md if available - MANDATORY: copy URLs exactly]
+
+     ## 📄 今日のAI論文トレンド
+     [Content from ai_trending_papers.md if available]
+
+     ## 💻 テックブログ
+     [Content from tech_blog_articles.md if available - MANDATORY: copy URLs exactly]
+
+     ## 🌐 海外コミュニティ動向
+     [Content from community_discussions.md if available - MANDATORY: copy URLs exactly]
+
+     ## 📅 今日のAI開発イベント
+     [Content from events.md if available - only new/imminent items]
+
+     ## 🎢 今後の大型イベント
+     [Content from major_conferences.md if available - only when there is news]
+
+     ## 📝 まとめ
+     [One concise paragraph, 140 characters or less (Japanese)]
+
+     ## 日刊AI駆動開発について
+     この記事は以下リポジトリの内容で生成されています。
+     追加したい情報、修正、改善案などあればIssueを立てるか変更のPRをお願いします！
+
+     https://github.com/pppp606/weekly_ai_dev
+     ```
+
+5. **Run textlint Quality Check**
+   - After generating the article, run textlint to check and fix the article:
+     ```bash
+     npx textlint --fix articles/daily_ai_YYYYMMDD.md
+     ```
+   - Generate a detailed textlint report and save it to the resources directory:
+     ```bash
+     npx textlint articles/daily_ai_YYYYMMDD.md --format json > resources/[TODAY_DATE]/textlint-report.json
+     ```
+   - **IMPORTANT**: This step is non-blocking - continue even if textlint finds issues
+
+6. **Error Handling**
+   - If no data files are found, generate a minimal article explaining the situation
+   - Always produce some output, even if data collection was incomplete
+   - If textlint fails to run, log the error but continue with the pipeline
+
+**Execution Notes:**
+- The article should be in Japanese with appropriate formatting for Zenn
+- **Writing quality**: If the `japanese-tech-writing` skill is available, follow its norms — one sentence per line, paragraph-level argumentation, no LLM-ish hype or empty verbs, no redundancy. **But prioritize EXPLANATION over brevity**. Write like a human editor explaining the day to a colleague.
+- Daily edition should be noticeably shorter than the weekly edition when the day is quiet — never pad sections to look full
+- Gracefully handle missing data sources
+- **CRITICAL**: Never include sections with "No updates", "No events found", or similar empty content - completely exclude these sections
+
+**Completion Output:**
+When finished, output exactly:
+```
+STATUS: SUCCESS
+FILE: articles/daily_ai_YYYYMMDD.md
+SECTIONS_INCLUDED: [list of sections that had content]
+SECTIONS_SKIPPED: [list of sections that were empty or missing]
+```
+Or if failed:
+```
+STATUS: FAILED
+ERROR: [error description]
+```
